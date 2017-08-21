@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+import MobileCenter
+import MobileCenterAnalytics
+import MobileCenterCrashes
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
@@ -15,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        MSMobileCenter.start("737d637b-8f84-4263-9944-d0bfd6ec312a", withServices:[
+            MSAnalytics.self,
+            MSCrashes.self
+            ])        // Override point for customization after application launch.
+        MSAnalytics.trackEvent("launch");
         return true
     }
 
@@ -41,6 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func attachments(with crashes: MSCrashes, for errorReport: MSErrorReport) -> [MSErrorAttachmentLog] {
+        let attachment1 = MSErrorAttachmentLog.attachment(withText: "Hello world!", filename: "hello.txt")
+        let attachment2 = MSErrorAttachmentLog.attachment(withBinary: "Fake image".data(using: String.Encoding.utf8), filename: nil, contentType: "image/jpeg")
+        return [attachment1!, attachment2!]
+    }
 }
 

@@ -7,7 +7,9 @@
 //
 
 import SpriteKit
-
+import MobileCenter
+import MobileCenterAnalytics
+import MobileCenterCrashes
 class GameScene: SKScene, SKPhysicsContactDelegate{
     let verticalPipeGap = 150.0
     
@@ -196,7 +198,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         // Reset _canRestart
         canRestart = false
-        
+        if score>0
+        {
+        MSCrashes.generateTestCrash()
+        }
         // Reset score
         score = 0
         scoreLabelNode.text = String(score)
@@ -213,6 +218,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         } else if canRestart {
             self.resetScene()
         }
+        MSAnalytics.trackEvent("touchesBegan");
     }
     
     override func update(_ currentTime: TimeInterval) {
