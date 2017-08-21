@@ -10,18 +10,22 @@ import UIKit
 import MobileCenter
 import MobileCenterAnalytics
 import MobileCenterCrashes
+import MobileCenterPush
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDelegate {
                             
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         MSCrashes.setDelegate(self)
+        MSPush.setDelegate(self)
         MSMobileCenter.start("737d637b-8f84-4263-9944-d0bfd6ec312a", withServices:[
             MSAnalytics.self,
-            MSCrashes.self
+            MSCrashes.self,
+            MSPush.self
             ])        // Override point for customization after application launch.
         MSAnalytics.trackEvent("launch");
+        var installId = MSMobileCenter.installId()
         return true
     }
 
@@ -52,5 +56,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate {
         let attachment2 = MSErrorAttachmentLog.attachment(withBinary: "Fake image".data(using: String.Encoding.utf8), filename: nil, contentType: "image/jpeg")
         return [attachment1!, attachment2!]
     }
-}
+    func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
+        var message: String = pushNotification.message
+        for item in pushNotification.customData {
+            message = String(format: "%@\n%@: %@", message, item.key, item.value)
+        }
+        let alert = UIAlertView(title: pushNotification.title, message: message, delegate: self, cancelButtonTitle: "OK")
+        alert.show()
+    }}
 
