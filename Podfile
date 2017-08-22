@@ -7,5 +7,10 @@ target 'FlappyBird' do
 end
 target 'FlappyBirdTests' do
 end
+use_frameworks! 
+#this line is necessary if your project is using Swift
 
+target 'FlappyBirdUITests' do
+  pod 'VSMobileCenterExtensions'
+end
 

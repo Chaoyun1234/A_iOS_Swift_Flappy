@@ -17,9 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //MSMobileCenter.setLogUrl("https://in-staging-south-centralus.staging.avalanch.es");
         MSCrashes.setDelegate(self)
         MSPush.setDelegate(self)
-        MSMobileCenter.start("737d637b-8f84-4263-9944-d0bfd6ec312a", withServices:[
+        MSMobileCenter.start("01b6051f-1540-49a0-bf75-8c1c40819e48", withServices:[
             MSAnalytics.self,
             MSCrashes.self,
             MSPush.self

@@ -38,6 +38,16 @@
                ReferencedContainer = "container:FlappyBird.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4A20873D1F4BD62A00CEE664"
+               BuildableName = "FlappyBirdUITests.xctest"
+               BlueprintName = "FlappyBirdUITests"
+               ReferencedContainer = "container:FlappyBird.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
