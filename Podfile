@@ -3,6 +3,8 @@
 
 target 'FlappyBird' do
   pod 'MobileCenter'
+  pod 'MobileCenter/Crashes’
+  pod 'MobileCenter/Analytics’
   pod 'MobileCenter/Push'
 end
 target 'FlappyBirdTests' do

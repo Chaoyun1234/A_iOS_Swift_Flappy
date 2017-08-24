@@ -19,13 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         MSCrashes.setDelegate(self)
         MSPush.setDelegate(self)
-        MSMobileCenter.start("737d637b-8f84-4263-9944-d0bfd6ec312a", withServices:[
+        MSMobileCenter.start("3d5f0e23-faad-4f16-b881-5834adc4fbbe", withServices:[
             MSAnalytics.self,
             MSCrashes.self,
             MSPush.self
             ])        // Override point for customization after application launch.
         MSAnalytics.trackEvent("launch");
+        
+        MSMobileCenter.setLogLevel(MSLogLevel.verbose)
         var installId = MSMobileCenter.installId()
+        
+        var customProperties = MSCustomProperties()
+        customProperties.setString("blue", forKey: "color")
+        customProperties.setNumber(10, forKey: "score")
+        customProperties.clearProperty(forKey: "score")
+        MSMobileCenter.setCustomProperties(customProperties)
         return true
     }
 
