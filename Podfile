@@ -6,6 +6,7 @@ target 'FlappyBird' do
   pod 'MobileCenter/Crashes’
   pod 'MobileCenter/Analytics’
   pod 'MobileCenter/Push'
+  pod 'MobileCenter/Distribute'
 end
 target 'FlappyBirdTests' do
 end

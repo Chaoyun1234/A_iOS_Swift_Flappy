@@ -11,18 +11,24 @@ import MobileCenter
 import MobileCenterAnalytics
 import MobileCenterCrashes
 import MobileCenterPush
+import MobileCenterDistribute
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDelegate,MSDistributeDelegate {
                             
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         MSCrashes.setDelegate(self)
         MSPush.setDelegate(self)
-        MSMobileCenter.start("3d5f0e23-faad-4f16-b881-5834adc4fbbe", withServices:[
+        MSDistribute.setDelegate(self)
+        // Depending on the user's choice, call notify() with the right value.
+        MSDistribute.notify(MSUpdateAction.update);
+        MSDistribute.notify(MSUpdateAction.postpone);
+        MSMobileCenter.start("4dfa3bc0-89e5-4f7b-b507-d6c8a523c376", withServices:[
             MSAnalytics.self,
             MSCrashes.self,
-            MSPush.self
+            MSPush.self,
+            MSDistribute.self
             ])        // Override point for customization after application launch.
         MSAnalytics.trackEvent("launch");
         
@@ -71,5 +77,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
         }
         let alert = UIAlertView(title: pushNotification.title, message: message, delegate: self, cancelButtonTitle: "OK")
         alert.show()
-    }}
+    }
+    func distribute(_ distribute: MSDistribute!, releaseAvailableWith details: MSReleaseDetails!) -> Bool {
+        
+        // Your code to present your UI to the user, e.g. an UIAlertView.
+        UIAlertView.init(title: "Update available", message: "Do you want to update?", delegate: self as! UIAlertViewDelegate, cancelButtonTitle: "Postpone", otherButtonTitles: "Update").show()
+        return true;
+    }
+}
 
