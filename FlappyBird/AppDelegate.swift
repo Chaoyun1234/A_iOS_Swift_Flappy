@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
         // Depending on the user's choice, call notify() with the right value.
         MSDistribute.notify(MSUpdateAction.update);
         MSDistribute.notify(MSUpdateAction.postpone);
-        MSMobileCenter.start("4dfa3bc0-89e5-4f7b-b507-d6c8a523c376", withServices:[
+        MSMobileCenter.start("3e2251a0-fb8a-4247-a6f4-261b516a7b41", withServices:[
             MSAnalytics.self,
             MSCrashes.self,
             MSPush.self,
@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
     }
     
     func attachments(with crashes: MSCrashes, for errorReport: MSErrorReport) -> [MSErrorAttachmentLog] {
-        let attachment1 = MSErrorAttachmentLog.attachment(withText: "Hello world!", filename: "hello.txt")
+        let attachment1 = MSErrorAttachmentLog.attachment(withText: "Hello world!hvhhvhfffuurfurtfrutghtuhgejd", filename: "hello.txt")
         let attachment2 = MSErrorAttachmentLog.attachment(withBinary: "Fake image".data(using: String.Encoding.utf8), filename: nil, contentType: "image/jpeg")
         return [attachment1!, attachment2!]
     }
@@ -82,6 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
         
         // Your code to present your UI to the user, e.g. an UIAlertView.
         UIAlertView.init(title: "Update available", message: "Do you want to update?", delegate: self as! UIAlertViewDelegate, cancelButtonTitle: "Postpone", otherButtonTitles: "Update").show()
+        // Depending on the user's choice, call notify() with the right value.
+        MSDistribute.notify(MSUpdateAction.update);
+        MSDistribute.notify(MSUpdateAction.postpone);
         return true;
     }
 }
