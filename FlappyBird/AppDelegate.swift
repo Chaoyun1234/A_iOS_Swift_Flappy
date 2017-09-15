@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
         // Depending on the user's choice, call notify() with the right value.
         MSDistribute.notify(MSUpdateAction.update);
         MSDistribute.notify(MSUpdateAction.postpone);
-        MSMobileCenter.start("3e2251a0-fb8a-4247-a6f4-261b516a7b41", withServices:[
+        MSMobileCenter.start("64e85333-e705-4bb0-bf31-8d03c869d0cf", withServices:[
             MSAnalytics.self,
             MSCrashes.self,
             MSPush.self,
