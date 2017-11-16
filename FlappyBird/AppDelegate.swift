@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import MobileCenter
-import MobileCenterAnalytics
-import MobileCenterCrashes
-import MobileCenterPush
-import MobileCenterDistribute
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
+import AppCenterPush
+import AppCenterDistribute
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDelegate,MSDistributeDelegate {
                             
@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
         // Depending on the user's choice, call notify() with the right value.
         MSDistribute.notify(MSUpdateAction.update);
         MSDistribute.notify(MSUpdateAction.postpone);
-        MSMobileCenter.start("64e85333-e705-4bb0-bf31-8d03c869d0cf", withServices:[
+        MSAppCenter.setLogUrl("https://in-staging-south-centralus.staging.avalanch.es")
+        MSAppCenter.start("f7b2bb1f-12d7-44c0-a70a-87291cbc5f9e", withServices:[
             MSAnalytics.self,
             MSCrashes.self,
             MSPush.self,
@@ -32,14 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
             ])        // Override point for customization after application launch.
         MSAnalytics.trackEvent("launch");
         
-        MSMobileCenter.setLogLevel(MSLogLevel.verbose)
-        var installId = MSMobileCenter.installId()
+        MSAppCenter.setLogLevel(MSLogLevel.verbose)
+        var installId = MSAppCenter.installId()
         
         var customProperties = MSCustomProperties()
         customProperties.setString("blue", forKey: "color")
         customProperties.setNumber(10, forKey: "score")
         customProperties.clearProperty(forKey: "score")
-        MSMobileCenter.setCustomProperties(customProperties)
+        MSAppCenter.setCustomProperties(customProperties)
         return true
     }
 
@@ -66,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
     }
     
     func attachments(with crashes: MSCrashes, for errorReport: MSErrorReport) -> [MSErrorAttachmentLog] {
-        let attachment1 = MSErrorAttachmentLog.attachment(withText: "Hello world!hvhhvhfffuurfurtfrutghtuhgejd", filename: "hello.txt")
+        let attachment1 = MSErrorAttachmentLog.attachment(withText: "Hello world!", filename: "hello.txt")
         let attachment2 = MSErrorAttachmentLog.attachment(withBinary: "Fake image".data(using: String.Encoding.utf8), filename: nil, contentType: "image/jpeg")
         return [attachment1!, attachment2!]
     }

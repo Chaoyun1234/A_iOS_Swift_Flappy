@@ -2,11 +2,11 @@
 # platform :ios, '9.0'
 
 target 'FlappyBird' do
-  pod 'MobileCenter'
-  pod 'MobileCenter/Crashes’
-  pod 'MobileCenter/Analytics’
-  pod 'MobileCenter/Push'
-  pod 'MobileCenter/Distribute'
+  pod 'AppCenter'
+  pod 'AppCenter/Crashes’
+  pod 'AppCenter/Analytics’
+  pod 'AppCenter/Push'
+  pod 'AppCenter/Distribute'
 end
 target 'FlappyBirdTests' do
 end

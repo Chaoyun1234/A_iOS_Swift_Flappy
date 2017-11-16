@@ -7,9 +7,9 @@
 //
 
 import SpriteKit
-import MobileCenter
-import MobileCenterAnalytics
-import MobileCenterCrashes
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 class GameScene: SKScene, SKPhysicsContactDelegate{
     let verticalPipeGap = 150.0
     

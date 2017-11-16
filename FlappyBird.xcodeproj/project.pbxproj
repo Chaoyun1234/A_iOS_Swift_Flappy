@@ -219,6 +219,12 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.GameCenter = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -361,7 +367,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FlappyBird/Pods-FlappyBird-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/MobileCenter/MobileCenterDistributeResources.bundle,
+				"$PODS_CONFIGURATION_BUILD_DIR/AppCenter/AppCenterDistributeResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -502,6 +508,7 @@
 				CODE_SIGN_ENTITLEMENTS = FlappyBird/FlappyBird.entitlements;
 				DEVELOPMENT_TEAM = 3D27XEAVGH;
 				INFOPLIST_FILE = FlappyBird/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = qw.FlappyBird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -517,6 +524,7 @@
 				CODE_SIGN_ENTITLEMENTS = FlappyBird/FlappyBird.entitlements;
 				DEVELOPMENT_TEAM = 3D27XEAVGH;
 				INFOPLIST_FILE = FlappyBird/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = qw.FlappyBird;
 				PRODUCT_NAME = "$(TARGET_NAME)";
