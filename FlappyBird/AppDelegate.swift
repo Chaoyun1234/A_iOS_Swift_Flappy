@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MSCrashesDelegate,MSPushDe
         // Depending on the user's choice, call notify() with the right value.
         MSDistribute.notify(MSUpdateAction.update);
         MSDistribute.notify(MSUpdateAction.postpone);
-        MSAppCenter.setLogUrl("https://in-staging-south-centralus.staging.avalanch.es")
-        MSAppCenter.start("f7b2bb1f-12d7-44c0-a70a-87291cbc5f9e", withServices:[
+        //MSAppCenter.setLogUrl("https://in-staging-south-centralus.staging.avalanch.es")
+        MSAppCenter.start("1bb0ed93-eba6-4d75-b170-cf0fb1351b18", withServices:[
             MSAnalytics.self,
             MSCrashes.self,
             MSPush.self,

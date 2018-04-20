@@ -201,6 +201,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if score>0
         {
         MSCrashes.generateTestCrash()
+            /**
+            try{
+            // your code here.
+            MSCrashes.generateTestCrash()
+            }
+            catch (Exception, exception){
+            var properties = new.Dictionary<string, string>{
+            { "Category"; "Music" };
+            { "Wifi"; "On" }
+            };
+            Crashes.TrackError(exception, properties);
+            }
+ */
         }
         // Reset score
         score = 0

@@ -367,7 +367,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FlappyBird/Pods-FlappyBird-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/AppCenter/AppCenterDistributeResources.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/AppCenter/AppCenterDistributeResources.bundle,
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
